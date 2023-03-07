@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/UI/DataListView/InfoMenuStylesheet.uss?fileID=7433441132597879392&amp;guid=49ea409082a8c014bb6190e17b74f192&amp;type=3#InfoMenuStylesheet" />
+    <ui:VisualElement class="background-black-transparent" style="flex-grow: 1; justify-content: center; align-items: center; height: auto; border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; margin-left: 4px; margin-right: 4px; margin-top: 4px; margin-bottom: 4px;">
+        <ui:VisualElement style="align-items: flex-start; width: 75%;">
+            <ui:Label text="Data name:" display-tooltip-when-elided="true" name="label-data-name" class="item-label-fonts" style="flex-grow: 0; flex-shrink: 1; font-size: 20px;" />
+            <ui:VisualElement style="flex-direction: row-reverse; justify-content: center; width: 100%;">
+                <ui:Label text="[u]" display-tooltip-when-elided="true" name="label-data-unit" class="item-label-fonts" style="margin-left: 15px;" />
+                <ui:Label text="NUM" display-tooltip-when-elided="true" name="label-data-value" class="item-label-fonts" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
