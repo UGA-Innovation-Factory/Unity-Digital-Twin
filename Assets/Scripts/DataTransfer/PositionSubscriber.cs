@@ -9,18 +9,19 @@ using UnityEngine;
 /// It groups all movement updates into one script, as opposed to needing 1 object for each axis.
 /// Needs work.
 /// </summary>
-public class PositionSubscriber : AValuelistener{
+public class PositionSubscriber : AbsValuelistener{
 
     [Serializable] class Data
     {
-        public int dataIndex = -1;
+        public bool enabled = false;
+        public string _DataKey;
         public float offset = 0;
         public float factor = 1;
         public float posGoal = 0;
 
-        public void updatePos(string[] str_array)
+        public void UpdatePos(string position)
         {
-            posGoal = factor * (float.Parse(str_array[dataIndex]) + offset);
+            posGoal = factor * (float.Parse(position) + offset);
         }
 
     }
@@ -34,44 +35,41 @@ public class PositionSubscriber : AValuelistener{
     [Tooltip("Settings for the Z axis movement")]
     [SerializeField] Data ZAxis;
 
-    private Action<string[]> UpdateGoalPosition;
 
+    [Header("Debug")]
     [SerializeField] private Vector3 all_posGoal;
 
-    // Start is called before the first frame update
-    void OnEnable()
+
+    protected override void Start()
     {
+        base.Start();
+
         all_posGoal = transform.localPosition;
 
-        if (XAxis.dataIndex > -1)
+        // Subscribe each axis to data if they are enabled
+        if (XAxis.enabled)
         {
-            UpdateGoalPosition += XAxis.updatePos;
+            SubscribeToData(XAxis._DataKey, XAxis.UpdatePos);
         }
-        if (YAxis.dataIndex > -1)
+        if (YAxis.enabled)
         {
-            UpdateGoalPosition += YAxis.updatePos;
+            SubscribeToData(YAxis._DataKey, YAxis.UpdatePos);
         }
-        if (ZAxis.dataIndex > -1)
+        if (ZAxis.enabled)
         {
-            UpdateGoalPosition += ZAxis.updatePos;
+            SubscribeToData(ZAxis._DataKey, ZAxis.UpdatePos);
         }
 
-        _DataPublisher.Subscribe(UpdateGoalPosition);
-    }
-
-
-    private void Start()
-    {
         XAxis.posGoal = transform.localPosition.x;
         YAxis.posGoal = transform.localPosition.y;
         ZAxis.posGoal = transform.localPosition.z;
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //void Update()
+    //{
+    //
+    //}
 
     private void FixedUpdate()
     {

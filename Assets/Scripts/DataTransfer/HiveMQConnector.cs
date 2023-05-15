@@ -79,8 +79,8 @@ public class HiveMQConnector : M2MqttUnityClient, IDataPublisher
     protected override void DecodeMessage(string topic, byte[] message)
     {
         string msg = System.Text.Encoding.UTF8.GetString(message);
+        Debug.Log("Received1: " + msg);
         PublishString(msg);
-        //Debug.Log("Received: " + msg);
     }
 
 

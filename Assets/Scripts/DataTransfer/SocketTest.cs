@@ -22,7 +22,7 @@ public class SocketTest : MonoBehaviour, IDataPublisher
     /*
     [Range(1,10)]
     [SerializeField] private int number_of_outputs;
-    [SerializeField] private List<AValuelistener> _readers;
+    [SerializeField] private List<AbsValuelistener> _readers;
     */
 
     //PubSub to other parts of Unity code --------------------------------
