@@ -41,13 +41,21 @@ namespace M2MqttUnity
     /// </summary>
     public class M2MqttUnityClient : MonoBehaviour
     {
+        [SerializeField][HideInInspector]
         protected string brokerAddress = "localhost";
+        [SerializeField][HideInInspector]
         protected int brokerPort = 1883;
+        [SerializeField][HideInInspector]
         protected bool isEncrypted = false;
+        [SerializeField][HideInInspector]
         protected int connectionDelay = 500;
+        [SerializeField][HideInInspector]
         protected int timeoutOnConnection = MqttSettings.MQTT_CONNECT_TIMEOUT;
+        [SerializeField][HideInInspector]
         protected bool autoConnect = false;
+        [SerializeField][HideInInspector]
         protected string mqttUserName = null;
+        [SerializeField][HideInInspector]
         protected string mqttPassword = null;
         
         /// <summary>

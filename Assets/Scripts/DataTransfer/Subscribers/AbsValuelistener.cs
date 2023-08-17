@@ -12,16 +12,16 @@ using UnityEngine;
 /// </summary>
 public abstract class AbsValuelistener : MonoBehaviour {
 
-    [Header("OLD - Data publisher")]
-    [SerializeField]
-    [Tooltip("Data publisher to subscribe to using it's Subscribe() function")]
-    protected HiveMQConnector _DataPublisher;
-    [SerializeField]
-    [Tooltip("Index in the published list of the data that should be used")]
-    protected int _DataIndex;
+    //[Header("OLD - Data publisher")]
+    //[SerializeField]
+    //[Tooltip("Data publisher to subscribe to using it's Subscribe() function")]
+    //protected HiveMQConnector _DataPublisher;
+    //[SerializeField]
+    //[Tooltip("Index in the published list of the data that should be used")]
+    //protected int _DataIndex;
 
 
-    [Header("NEW - Data publisher")]
+    [Header("Data publisher")]
     [SerializeField]
     [Tooltip("Data entry point. For visualization only")]
     protected DataEntryPoint _DataEntryPoint;
@@ -47,11 +47,10 @@ public abstract class AbsValuelistener : MonoBehaviour {
     /// <param name="callback">Function to call on data updates</param>
     protected void SubscribeToData(string _dataKey, Action<string> callback)
     {
-        if (_dataKey != null)
-        {
+        if (_dataKey == null)
             throw new Exception("Attempted to subscribe with a Null key");
-        }
 
+        // Subscribe to the data entry point by passing a lambda function that calls the callback with the data from the entrypoint data dictionary
         Action<Dictionary<string, string>> lamb = (Dictionary<string, string> dataDictionary) =>
         {
             callback(dataDictionary[_dataKey]);

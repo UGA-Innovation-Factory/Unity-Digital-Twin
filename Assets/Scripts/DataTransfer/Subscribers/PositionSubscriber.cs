@@ -5,9 +5,7 @@ using UnityEngine;
 
 
 /// <summary>
-/// An attempt at updating ReadAndAdjustPosition.cs. Currently unused
 /// It groups all movement updates into one script, as opposed to needing 1 object for each axis.
-/// Needs work.
 /// </summary>
 public class PositionSubscriber : AbsValuelistener{
 
